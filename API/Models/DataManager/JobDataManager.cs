@@ -71,7 +71,18 @@ namespace API.Models.DataManager
 
         public void Update(Job entityToUpdate, Job entity)
         {
-            throw new System.NotImplementedException();
+            entityToUpdate = _jobStoreContext.Job
+                //.Include(a => a.JobCompanies)
+                //.Include(a => a.CompanyContact)
+                .Single(b => b.Id == entityToUpdate.Id);
+
+            entityToUpdate.Title = entity.Title;
+            entityToUpdate.CategoryId = entity.CategoryId;
+            entityToUpdate.PublisherId = entity.PublisherId;
+
+            _jobStoreContext.Entry(entityToUpdate).State = EntityState.Modified;
+
+            _jobStoreContext.SaveChanges();
         }
 
         public void Delete(Job job)

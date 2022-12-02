@@ -54,6 +54,29 @@ namespace API.Controllers
             return CreatedAtRoute("GetJob", new { Id = job.Id }, null);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Job company)
+        {
+            if (company == null)
+            {
+                return BadRequest("Job is null.");
+            }
+
+            var objToUpdate = _dataRepository.Get(id);
+            if (objToUpdate == null)
+            {
+                return NotFound("The Job record couldn't be found.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            _dataRepository.Update(objToUpdate, company);
+            return NoContent();
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {

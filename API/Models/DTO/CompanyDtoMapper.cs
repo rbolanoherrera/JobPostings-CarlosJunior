@@ -14,8 +14,8 @@ namespace API.Models.DTO
                 CompanyContact = new CompanyContactDto()
                 {
                     CompanyId = company.Id,
-                    Address = company.CompanyContact.Address,
-                    ContactNumber = company.CompanyContact.ContactNumber
+                    Address = company.CompanyContact?.Address,
+                    ContactNumber = company.CompanyContact?.ContactNumber
                 }
             };
         }

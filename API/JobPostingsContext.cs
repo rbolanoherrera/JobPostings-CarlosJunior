@@ -70,31 +70,31 @@ namespace API
                     .WithMany(p => p.Job)
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Book__CategoryId__403A8C7D");
+                    .HasConstraintName("FK__Job__CategoryId__403A8C7D");
 
                 entity.HasOne(d => d.Publisher)
                     .WithMany(p => p.Jobs)
                     .HasForeignKey(d => d.PublisherId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__Book__PublisherI__412EB0B6");
+                    .HasConstraintName("FK__Job__PublisherI__412EB0B6");
             });
 
             modelBuilder.Entity<JobCompanies>(entity =>
             {
                 entity.HasKey(e => new { e.JobId, e.CompanyId })
-                    .HasName("PK__BookAuth__6AED6DC4F50D1BAA");
+                    .HasName("PK__JobAuth__6AED6DC4F50D1BAA");
 
                 entity.HasOne(d => d.Company)
                     .WithMany(p => p.JobCompanies)
                     .HasForeignKey(d => d.CompanyId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__BookAutho__Autho__44FF419A");
+                    .HasConstraintName("FK__JobAutho__Autho__44FF419A");
 
                 entity.HasOne(d => d.Job)
                     .WithMany(p => p.JobCompanies)
                     .HasForeignKey(d => d.JobId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__BookAutho__BookI__440B1D61");
+                    .HasConstraintName("FK__JobAutho__JobI__440B1D61");
             });
 
             modelBuilder.Entity<JobCategory>(entity =>

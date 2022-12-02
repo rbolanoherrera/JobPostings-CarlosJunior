@@ -27,6 +27,7 @@ namespace API
             services.AddScoped<IDataRepository<Company, CompanyDto>, CompanyDataManager>();
             services.AddScoped<IDataRepository<Job, JobDto>, JobDataManager>();
             services.AddScoped<IDataRepository<Publisher, PublisherDto>, PublisherDataManager>();
+            services.AddScoped<IDataRepository<JobCategory, JobCategoryDto>, JobCategoryDataManager>();
 
             services.AddControllers()
                 .AddNewtonsoftJson(
